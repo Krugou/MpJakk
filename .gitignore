@@ -136,7 +136,7 @@ dist
 # testing
 /coverage
 
-
+/mpjakkpages/
 
 # misc
 .DS_Store
