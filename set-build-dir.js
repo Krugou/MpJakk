@@ -4,7 +4,7 @@ const {execSync} = require('child_process');
 const branchName = execSync('git rev-parse --abbrev-ref HEAD')
   .toString()
   .trim();
-console.log(`Current branch name: ${branchName}`);
+console.log(`Current branch name: "${branchName}"`);
 // Set the build directory name based on the branch name
 let buildDirName;
 if (branchName === 'main') {
@@ -22,5 +22,5 @@ try {
   console.error(`Error reading package.json file: ${err}`);
   process.exit(1);
 }
-packageJson.scripts.buildBranch = `set BUILD_PATH=${buildDirName} &&  react-scripts build`;
+packageJson.scripts.buildBranch = `set BUILD_PATH=${buildDirName}&&  react-scripts build`;
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
