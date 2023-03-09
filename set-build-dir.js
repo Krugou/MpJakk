@@ -18,10 +18,6 @@ const fs = require('fs');
 let packageJson;
 try {
   packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-  console.log(
-    '🚀 ~ file: set-build-dir.js:21 ~ packageJson:',
-    packageJson.scripts
-  );
 } catch (err) {
   console.error(`Error reading package.json file: ${err}`);
   process.exit(1);
