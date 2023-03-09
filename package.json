@@ -17,7 +17,7 @@
     "start": "react-scripts start",
     "buildtrue": "npm run setFolder &&  npm run buildBranch",
     "setFolder": "node set-build-dir.js",
-    "buildBranch": "set BUILD_PATH=mpjakkpages/week1-http-b&&  react-scripts build",
+    "buildBranch": "set BUILD_PATH=mpjakkpages/week2&&  react-scripts build",
     "build": " react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
