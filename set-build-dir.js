@@ -18,13 +18,9 @@ const fs = require('fs');
 let packageJson;
 try {
   packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-  console.log(
-    '🚀 ~ file: set-build-dir.js:21 ~ packageJson:',
-    packageJson.scripts
-  );
 } catch (err) {
   console.error(`Error reading package.json file: ${err}`);
   process.exit(1);
 }
-packageJson.scripts.build = `node set-build-dir.js && set BUILD_PATH=${buildDirName} &&  react-scripts build`;
+packageJson.scripts.build = `set BUILD_PATH=${buildDirName} &&  react-scripts build`;
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
