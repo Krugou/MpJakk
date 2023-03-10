@@ -7,6 +7,22 @@
   pointer-events: none;
 }
 
+// remove dots from list
+* {
+  list-style-type: none;
+}
+
+li {
+
+  border-bottom: 1px solid #000000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
 #root {
   display: flex;
   flex-direction: column;
