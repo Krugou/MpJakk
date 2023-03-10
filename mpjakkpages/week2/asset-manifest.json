@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/~aleksino/mpjakk/week2-navigation/static/css/main.df37563f.css",
+    "main.js": "/~aleksino/mpjakk/week2-navigation/static/js/main.80fb1a8c.js",
+    "index.html": "/~aleksino/mpjakk/week2-navigation/index.html",
+    "main.df37563f.css.map": "/~aleksino/mpjakk/week2-navigation/static/css/main.df37563f.css.map",
+    "main.80fb1a8c.js.map": "/~aleksino/mpjakk/week2-navigation/static/js/main.80fb1a8c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df37563f.css",
+    "static/js/main.80fb1a8c.js"
+  ]
+}
