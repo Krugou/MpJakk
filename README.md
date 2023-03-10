@@ -10,7 +10,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week2-navigation](https://users.metropolia.fi/~aleksino/mpjakk/week2-navigation)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week2](https://users.metropolia.fi/~aleksino/mpjakk/week2)
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
