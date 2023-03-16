@@ -4,7 +4,7 @@
 
 Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week1-vite1](https://users.metropolia.fi/~aleksino/mpjakk/week1-vite1)
 
-## Custom path for this branch
+## Custom path for this branch 
 
 DeploymentFolder: mpjakk
 Nickname: aleksino

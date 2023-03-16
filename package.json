@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 8080 --open",
-    "buildScript": "node setbuilddir.cjs && npm run build && npm run deploy",
+    "buildScript": "node setbuilddir.cjs && npm run buildBranch && npm run deploy",
     "buildBranch": "vite build --base ~aleksino/mpjakk/week1-vite1/ --outDir mpjakkpages/week1-vite1",
     "build": "vite build",
     "deploy": "git checkout main && git merge deploy && git push origin main && git checkout deploy",
