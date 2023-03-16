@@ -87,12 +87,12 @@ const lines = readmeContent.split('\n');
 lines[2] = `## branchName: ${branchName}`;
 lines[6] = `## Custom path for this branch `;
 lines[8] = `DeploymentFolder: ${deploymentFolder}`;
-lines[9] = `Nickname: ${nickName}`;
-lines[10] = `RootPath: [${rootPath}](${rootPath})`;
-lines[11] = `BuildFolder: ${buildFolder}`;
-lines[12] = `DeploymentUrl: ${deploymentUrl}`;
-lines[13] = `BuildDirName: ${buildDirName}`;
-lines[14] = `Link: [${link}](${link})`;
+lines[10] = `Nickname: ${nickName}`;
+lines[12] = `RootPath: [${rootPath}](${rootPath})`;
+lines[14] = `BuildFolder: ${buildFolder}`;
+lines[16] = `DeploymentUrl: ${deploymentUrl}`;
+lines[18] = `BuildDirName: ${buildDirName}`;
+lines[20] = `Link: [${link}](${link})`;
 
 lines[4] = `Open link in browser [${link}](${link})`;
 
