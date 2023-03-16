@@ -7,11 +7,11 @@
   "scripts": {
     "dev": "vite --port 8080 --open",
     "buildScript": "node set-build-dir.cjs && npm run buildBranch && npm run addpush && npm run deploymain && npm run backtoCurrent",
-    "buildBranch": "vite build --base ~aleksino/mpjakk/week1-vite/ --outDir mpjakkpages/week1-vite",
+    "buildBranch": "vite build --base ~aleksino/mpjakk/main/ --outDir build",
     "build": "vite build ",
-    "addpush": "git add . &&  git commit -m \"update week1-vite\" && git push origin week1-vite ",
-    "deploymain": "git checkout main && git pull origin main && git merge week1-vite && git add . && git commit -m \"Merge week1-vite into main\" && git push origin main ",
-    "backtoCurrent": "git checkout week1-vite",
+    "addpush": "git add . &&  git commit -m \"update main\" && git push origin main ",
+    "deploymain": "git checkout main && git pull origin main && git merge main && git add . && git commit -m \"Merge main into main\" && git push",
+    "backtoCurrent": "git checkout main",
     "preview": "vite preview",
     "optimize": "vite optimize ./dist"
   },
