@@ -13,7 +13,7 @@
     "deploymain": "git checkout main && git pull origin main && git merge week1-vite && git add . && git commit -m 'Merge week1-vite into main' && git push origin main && git checkout week1-vite",
     "preview": "vite preview",
     "optimize": "vite optimize ./dist",
-    "deploy": "git checkout main && git pull origin main && git merge week1-vite && git add . && git commit -m 'Merge week1-vite into main' && git push origin main && git checkout week1-vite"
+    "deploy": "git checkout main && git pull origin main && git merge week1-vite && git add . && git commit -m \"Merge week1-vite into main\" && git push origin main && git checkout week1-vite"
   },
   "dependencies": {
     "child_process": "^1.0.2",
