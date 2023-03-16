@@ -5,11 +5,16 @@
   "author": "Aleksi Nokelainen",
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --port 8080 --open",
+    "buildScript": "node setbuilddir.cjs && npm run build && npm run deploy",
+    "buildBranch": "vite build --base ~aleksino/mpjakk/week1-vite1/ --outDir mpjakkpages/week1-vite1",
     "build": "vite build",
-    "preview": "vite preview"
+    "deploy": "git checkout main && git merge deploy && git push origin main && git checkout deploy",
+    "preview": "vite preview",
+    "optimize": "vite optimize ./dist"
   },
   "dependencies": {
+    "child_process": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
