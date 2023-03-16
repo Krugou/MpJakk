@@ -79,13 +79,47 @@ console.log('🚀 ~ file: set-build-dir.js:52 ~ link:', link);
 const readmePath = './README.md';
 const readmeContent = fs.readFileSync(readmePath, 'utf8');
 const lines = readmeContent.split('\n');
+let quote = '';
+let author = '';
+// fetch from https://quotes.rest/qod?category=inspire
+fetch('https://quotes.rest/qod?category=inspire')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('🚀 ~ file: setbuilddir.cjs:88 ~ .then ~ data:', data);
+    // get the quote
+    quote = data.contents.quotes[0].quote;
+    // get the author
+    author = data.contents.quotes[0].author;
+    lines[2] = `## branchName: ${branchName}`;
+    lines[6] = `## Custom path for this branch `;
+    lines[7] = `DeploymentFolder: ${deploymentFolder}`;
+    lines[8] = `Nickname: ${nickName}`;
+    lines[9] = `RootPath: ${rootPath}`;
+    lines[10] = `BuildFolder: ${buildFolder}`;
+    lines[11] = `DeploymentUrl: ${deploymentUrl}`;
+    lines[12] = `BuildDirName: ${buildDirName}`;
+    lines[13] = `Link: ${link}`;
 
-// next line expects link is in 13th line in README.md
-if (lines.length < 2) {
-  console.error('README.md file does not contain expected number of lines');
-  process.exit(1);
-}
+    lines[4] = `Open link in browser [${link}](${link})`;
+    lines[15] = `${quote} - ${author}`;
 
-lines[12] = `Open link in browser [${link}](${link})`;
-fs.writeFileSync(readmePath, lines.join('\n'));
-console.log('Link added to README.md');
+    fs.writeFileSync(readmePath, lines.join('\n'));
+    console.log('Link added to README.md');
+  }) // if fetch fails
+  .catch((err) => {
+    lines[2] = `## branchName: ${branchName}`;
+    lines[6] = `## Custom path for this branch `;
+    lines[7] = `DeploymentFolder: ${deploymentFolder}`;
+    lines[8] = `Nickname: ${nickName}`;
+    lines[9] = `RootPath: ${rootPath}`;
+    lines[10] = `BuildFolder: ${buildFolder}`;
+    lines[11] = `DeploymentUrl: [${deploymentUrl}](${deploymentUrl})`;
+    lines[12] = `BuildDirName: ${buildDirName}`;
+    lines[13] = `Link: [${link}](${link})`;
+
+    lines[4] = `Open link in browser [${link}](${link})`;
+
+    fs.writeFileSync(readmePath, lines.join('\n'));
+    console.error(`Error fetch to README.md file: ${err}`);
+    process.exit(1);
+  });
