@@ -69,7 +69,7 @@ try {
   process.exit(1);
 }
 packageJson.scripts.buildBranch = `vite build --base ${deploymentUrl}/${branchName}/ --outDir ${buildDirName}`;
-packageJson.scripts.addpush = `git add . && git commit -m 'update ${branchName}' && git push origin ${branchName} `;
+packageJson.scripts.addpush = `git commit -m 'update ${branchName}' && git push origin ${branchName} `;
 packageJson.scripts.deploy = `git checkout main && git pull origin main && git merge ${branchName} && git add . && git commit -m 'Merge ${branchName} into main' && git push origin main && git checkout ${branchName}`;
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
 
