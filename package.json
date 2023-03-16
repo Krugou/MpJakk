@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 8080 --open",
-    "buildScript": "npm run script1 && npm run script2",
+    "buildScript": " echo 'startingScript' && npm run script1 && npm run script2 && echo 'Done!' ",
     "script1": "node set-build-dir.cjs && echo 'stage1' && npm run buildBranch && echo 'stage2' && npm run addpush && echo 'stage3' && npm run deploymain && echo 'stage4' ",
-    "script2": "npm run gitpush && npm run backtoCurrent",
+    "script2": "npm run gitpush && echo 'stage5'  && npm run backtoCurrent && echo 'stage6' ",
     "buildBranch": "vite build --base ~aleksino/mpjakk/week1-vite/ --outDir mpjakkpages/week1-vite",
     "build": "vite build ",
     "addpush": "git add . &&  git commit -m \"update week1-vite\" && git push origin week1-vite ",
