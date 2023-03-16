@@ -79,47 +79,18 @@ console.log('🚀 ~ file: set-build-dir.js:52 ~ link:', link);
 const readmePath = './README.md';
 const readmeContent = fs.readFileSync(readmePath, 'utf8');
 const lines = readmeContent.split('\n');
-let quote = '';
-let author = '';
-// fetch from https://quotes.rest/qod?category=inspire
-fetch('https://quotes.rest/qod?category=inspire')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log('🚀 ~ file: setbuilddir.cjs:88 ~ .then ~ data:', data);
-    // get the quote
-    quote = data.contents.quotes[0].quote;
-    // get the author
-    author = data.contents.quotes[0].author;
-    lines[2] = `## branchName: ${branchName}`;
-    lines[6] = `## Custom path for this branch `;
-    lines[8] = `DeploymentFolder: ${deploymentFolder}`;
-    lines[9] = `Nickname: ${nickName}`;
-    lines[10] = `RootPath: [${rootPath}](${rootPath})`;
-    lines[11] = `BuildFolder: ${buildFolder}`;
-    lines[12] = `DeploymentUrl: ${deploymentUrl}`;
-    lines[13] = `BuildDirName: ${buildDirName}`;
-    lines[14] = `Link: [${link}](${link})`;
 
-    lines[4] = `Open link in browser [${link}](${link})`;
-    lines[16] = `${quote} - ${author}`;
+lines[2] = `## branchName: ${branchName}`;
+lines[6] = `## Custom path for this branch `;
+lines[8] = `DeploymentFolder: ${deploymentFolder}`;
+lines[9] = `Nickname: ${nickName}`;
+lines[10] = `RootPath: [${rootPath}](${rootPath})`;
+lines[11] = `BuildFolder: ${buildFolder}`;
+lines[12] = `DeploymentUrl: ${deploymentUrl}`;
+lines[13] = `BuildDirName: ${buildDirName}`;
+lines[14] = `Link: [${link}](${link})`;
 
-    fs.writeFileSync(readmePath, lines.join('\n'));
-    console.log('Link added to README.md');
-  }) // if fetch fails
-  .catch((err) => {
-    lines[2] = `## branchName: ${branchName}`;
-    lines[6] = `## Custom path for this branch `;
-    lines[8] = `DeploymentFolder: ${deploymentFolder}`;
-    lines[9] = `Nickname: ${nickName}`;
-    lines[10] = `RootPath: [${rootPath}](${rootPath})`;
-    lines[11] = `BuildFolder: ${buildFolder}`;
-    lines[12] = `DeploymentUrl: ${deploymentUrl}`;
-    lines[13] = `BuildDirName: ${buildDirName}`;
-    lines[14] = `Link: [${link}](${link})`;
+lines[4] = `Open link in browser [${link}](${link})`;
 
-    lines[4] = `Open link in browser [${link}](${link})`;
-
-    fs.writeFileSync(readmePath, lines.join('\n'));
-    console.error(`Error fetch to README.md file: ${err}`);
-    process.exit(1);
-  });
+fs.writeFileSync(readmePath, lines.join('\n'));
+console.log('Link added to README.md');
