@@ -3,6 +3,7 @@ import React from 'react';
 import MediaRow from './MediaRow';
 
 const MediaTable = ({mediaArray}) => {
+  // mediaArray is an array of objects
   console.log(mediaArray);
   return (
     <table className="tableDefault">
