@@ -72,7 +72,7 @@ packageJson.scripts.buildBranch = `vite build --base ${deploymentUrl}/${branchNa
 // eslint-disable-next-line no-useless-escape
 packageJson.scripts.addpush = `git add . &&  git commit -m \"update ${branchName}\" && git push origin ${branchName} `;
 // eslint-disable-next-line no-useless-escape
-packageJson.scripts.deploy = `git checkout main && git pull origin main && git merge ${branchName} && git add . && git commit -m \"Merge ${branchName} into main\" && git push origin main && git checkout ${branchName}`;
+packageJson.scripts.deploymain = `git checkout main && git pull origin main && git merge ${branchName} && git add . && git commit -m \"Merge ${branchName} into main\" && git push origin main && git checkout ${branchName}`;
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
 
 // Generate link to deployment
