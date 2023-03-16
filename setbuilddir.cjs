@@ -92,16 +92,16 @@ fetch('https://quotes.rest/qod?category=inspire')
     author = data.contents.quotes[0].author;
     lines[2] = `## branchName: ${branchName}`;
     lines[6] = `## Custom path for this branch `;
-    lines[7] = `DeploymentFolder: ${deploymentFolder}`;
-    lines[8] = `Nickname: ${nickName}`;
-    lines[9] = `RootPath: ${rootPath}`;
-    lines[10] = `BuildFolder: ${buildFolder}`;
-    lines[11] = `DeploymentUrl: ${deploymentUrl}`;
-    lines[12] = `BuildDirName: ${buildDirName}`;
-    lines[13] = `Link: ${link}`;
+    lines[8] = `DeploymentFolder: ${deploymentFolder}`;
+    lines[9] = `Nickname: ${nickName}`;
+    lines[10] = `RootPath: [${rootPath}](${rootPath})`;
+    lines[11] = `BuildFolder: ${buildFolder}`;
+    lines[12] = `DeploymentUrl: ${deploymentUrl}`;
+    lines[13] = `BuildDirName: ${buildDirName}`;
+    lines[14] = `Link: [${link}](${link})`;
 
     lines[4] = `Open link in browser [${link}](${link})`;
-    lines[15] = `${quote} - ${author}`;
+    lines[16] = `${quote} - ${author}`;
 
     fs.writeFileSync(readmePath, lines.join('\n'));
     console.log('Link added to README.md');
@@ -109,13 +109,13 @@ fetch('https://quotes.rest/qod?category=inspire')
   .catch((err) => {
     lines[2] = `## branchName: ${branchName}`;
     lines[6] = `## Custom path for this branch `;
-    lines[7] = `DeploymentFolder: ${deploymentFolder}`;
-    lines[8] = `Nickname: ${nickName}`;
-    lines[9] = `RootPath: ${rootPath}`;
-    lines[10] = `BuildFolder: ${buildFolder}`;
-    lines[11] = `DeploymentUrl: [${deploymentUrl}](${deploymentUrl})`;
-    lines[12] = `BuildDirName: ${buildDirName}`;
-    lines[13] = `Link: [${link}](${link})`;
+    lines[8] = `DeploymentFolder: ${deploymentFolder}`;
+    lines[9] = `Nickname: ${nickName}`;
+    lines[10] = `RootPath: [${rootPath}](${rootPath})`;
+    lines[11] = `BuildFolder: ${buildFolder}`;
+    lines[12] = `DeploymentUrl: ${deploymentUrl}`;
+    lines[13] = `BuildDirName: ${buildDirName}`;
+    lines[14] = `Link: [${link}](${link})`;
 
     lines[4] = `Open link in browser [${link}](${link})`;
 
