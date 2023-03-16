@@ -9,8 +9,8 @@
     "buildScript": "node set-build-dir.cjs && npm run buildBranch && npm run addpush",
     "buildBranch": "vite build --base ~aleksino/mpjakk/week1-vite1/ --outDir mpjakkpages/week1-vite1",
     "build": "vite build ",
-    "addpush": "git add . && git commit -m 'update week1-vite1' && git push origin week1-vite1",
-    "deploy": "git add . && git commit -m 'update week1-vite1' && git push && git checkout main && git pull origin main && git merge week1-vite1 && git add . && git commit -m 'Merge week1-vite1 into main' && git push origin main && git checkout week1-vite1",
+    "addpush": "git add . && git commit -m 'update week1-vite1' ",
+    "deploy": "git checkout main && git pull origin main && git merge week1-vite1 && git add . && git commit -m 'Merge week1-vite1 into main' && git push origin main && git checkout week1-vite1",
     "preview": "vite preview",
     "optimize": "vite optimize ./dist"
   },
