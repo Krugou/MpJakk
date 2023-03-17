@@ -5,12 +5,16 @@ const fetchJson = async (url, options = {}) => {
     const response = await fetch(url, options);
     const json = await response.json();
     if (response.ok) {
-      return json;
-    } else {
-      const message = json.message;
+      // If the API response contains an error object, use its `message` property
+      // as the error message. Otherwise, use the generic error message.
+      const message = json.error
+        ? `${json.error} : ${json.message}`
+        : json.message || 'Unknown error';
+
       throw new Error(message);
     }
   } catch (err) {
+    console.log(err.message);
     throw new Error(err.message);
   }
 };
