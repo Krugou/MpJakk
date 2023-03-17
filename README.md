@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week1-http-a-vite
+## branchName: week1-http-b-vite
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week1-http-a-vite](https://users.metropolia.fi/~aleksino/mpjakk/week1-http-a-vite)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week1-http-b-vite](https://users.metropolia.fi/~aleksino/mpjakk/week1-http-b-vite)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week1-http-a-vite
+BuildDirName: mpjakkpages/week1-http-b-vite
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week1-http-a-vite](https://users.metropolia.fi/~aleksino/mpjakk/week1-http-a-vite)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week1-http-b-vite](https://users.metropolia.fi/~aleksino/mpjakk/week1-http-b-vite)
