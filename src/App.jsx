@@ -11,7 +11,7 @@ import Single from './views/Single';
 const App = () => {
   return (
     // eslint-disable-next-line no-undef
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={import.meta.env.BASE_URL}>
       <MediaProvider>
         <Nav />
         <Routes>
