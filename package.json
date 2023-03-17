@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 8080 --open",
+    "devDebug": "vite --port 8080 --open -d",
     "buildScript": " echo 'startingScript' && npm run script1 && npm run script2 && echo 'Done!' ",
     "script1": "node set-build-dir.cjs && echo 'stage1' && npm run buildBranch && echo 'stage2' && npm run addpush && echo 'stage3' && npm run deploymain && echo 'stage4' ",
     "script2": "npm run gitpush && echo 'stage5'  && npm run backtoCurrent && echo 'stage6' ",
