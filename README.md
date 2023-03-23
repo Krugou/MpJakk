@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week2-vite
+## branchName: week2-login-vite
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week2-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-vite)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week2-vite
+BuildDirName: mpjakkpages/week2-login-vite
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week2-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-vite)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite)

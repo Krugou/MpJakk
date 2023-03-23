@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
 import {useLogin} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
+import React from 'react';
 
 const LoginForm = (props) => {
   // eslint-disable-next-line no-unused-vars
@@ -32,22 +33,24 @@ const LoginForm = (props) => {
   const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, alkuarvot);
   console.log(inputs);
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="username"
-        name="username"
-        onChange={handleInputChange}
-        value={inputs.username}
-      />
-      <input
-        placeholder="password"
-        name="password"
-        type="password"
-        onChange={handleInputChange}
-        value={inputs.password}
-      />
-      <input type="submit" value="login" />
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="username"
+          name="username"
+          onChange={handleInputChange}
+          value={inputs.username}
+        />
+        <input
+          placeholder="password"
+          name="password"
+          type="password"
+          onChange={handleInputChange}
+          value={inputs.password}
+        />
+        <input type="submit" value="login" />
+      </form>
+    </>
   );
 };
 
