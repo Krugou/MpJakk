@@ -3,8 +3,7 @@ import {mediaUrl} from '../utils/variables';
 
 const Single = () => {
   const location = useLocation();
-  console.log('🚀 ~ file: Single.js:6 ~ Single ~ location:', location);
-  const file = location.state.file; // TODO in the next task: single media from props.location.state
+  const file = location.state.file;
 
   return (
     <>
@@ -13,7 +12,5 @@ const Single = () => {
     </>
   );
 };
-
-// TODO in the next task: add propType for location
 
 export default Single;
