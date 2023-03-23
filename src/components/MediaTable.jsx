@@ -1,6 +1,7 @@
 // import PropTypes from 'prop-types';
 // import {useEffect, useState} from 'react';
 // import {baseUrl} from '../utils/variables';
+import React from 'react';
 import {useMedia} from '../hooks/ApiHooks';
 import MediaRow from './MediaRow';
 

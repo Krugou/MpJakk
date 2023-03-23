@@ -2,8 +2,8 @@ import {useLocation} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
 
 const Single = () => {
-  const location = useLocation();
-  const file = location.state.file;
+  const {state} = useLocation();
+  const file = state.file;
 
   return (
     <>
