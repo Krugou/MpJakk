@@ -5,7 +5,7 @@ import {useUser} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
 
 const RegisterForm = (props) => {
-  const alkuarvot = {
+  const initValues = {
     username: '',
     password: '',
     email: '',
@@ -29,7 +29,7 @@ const RegisterForm = (props) => {
 
   const {inputs, handleInputChange, handleSubmit} = useForm(
     doRegister,
-    alkuarvot
+    initValues
   );
 
   return (
