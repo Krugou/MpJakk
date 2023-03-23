@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {baseUrl} from '../utils/variables';
+import { useEffect, useState } from 'react';
+import { baseUrl } from '../utils/variables';
 const fetchJson = async (url, options = {}) => {
   try {
     const response = await fetch(url, options);
@@ -36,4 +36,5 @@ const useMedia = () => {
   return {mediaArray};
 };
 
-export {useMedia};
+export { useMedia };
+
