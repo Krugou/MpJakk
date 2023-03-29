@@ -15,11 +15,11 @@ const Profile = () => {
   console.log(user);
   return (
     <>
-      <h1>Profile</h1>
+      <h1>Profile details</h1>
       <ul>
-        <li>{user.username}</li>
-        <li>{user.email}</li>
-        <li>{user.full_name}</li>
+        <li>User name: {user.username}</li>
+        <li>Email: {user.email}</li>
+        <li>Full name: {user.full_name}</li>
       </ul>
     </>
   );

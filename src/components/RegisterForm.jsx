@@ -61,7 +61,7 @@ const RegisterForm = (props) => {
           onChange={handleInputChange}
           value={inputs.full_name}
         />
-        <input type="submit" value="register" />
+        <input className="inputbutton" type="submit" value="register" />
       </form>
     </>
   );
