@@ -1,12 +1,9 @@
-import {useContext} from 'react';
-import {Navigate} from 'react-router-dom';
-import {MediaContext} from '../Contexts/MediaContext';
+import PropTypes from 'prop-types';
 
-const Logout = () => {
-  const [user, setUser] = useContext(MediaContext);
-  setUser(null);
-  localStorage.clear();
-  return <>{!user ? <Navigate to="/" /> : <div>Loading...</div>}</>;
+const Logout = (props) => {
+  return <div>Logout</div>;
 };
+
+Logout.propTypes = {};
 
 export default Logout;

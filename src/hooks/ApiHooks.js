@@ -1,90 +1,87 @@
-// TODO: add necessary imports
 import {useEffect, useState} from 'react';
 import {baseUrl} from '../utils/variables';
 
-const fetchJson = async (url, options = {}) => {
-  try {
-    const response = await fetch(url, options);
-    const json = await response.json();
-    if (response.ok) {
-      return json;
-    } else {
-      const message = json.message;
-      throw new Error(message);
-    }
-  } catch (err) {
-    throw new Error(err.message);
+const doFetch = async (url, options) => {
+  const response = await fetch(url, options);
+  const json = await response.json();
+  if (!response.ok) {
+    const message = json.error
+      ? `${json.message}: ${json.error}`
+      : json.message;
+    throw new Error(message || response.statusText);
   }
+  return json;
 };
 
 const useMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);
-  const getMediaFetch = async () => {
+  const getMedia = async () => {
     try {
-      const media = await fetchJson(baseUrl + 'media');
-      const allFiles = await Promise.all(
-        media.map(async (file) => {
-          return await fetchJson(`${baseUrl}media/${file.file_id}`);
+      const files = await doFetch(baseUrl + 'media');
+      const filesWithThumbnail = await Promise.all(
+        files.map(async (file) => {
+          return await doFetch(baseUrl + 'media/' + file.file_id);
         })
       );
-      setMediaArray(allFiles);
-    } catch (err) {
-      alert(err.message);
+      setMediaArray(filesWithThumbnail);
+    } catch (error) {
+      console.error('getMedia', error.message);
     }
   };
 
   useEffect(() => {
-    getMediaFetch();
+    try {
+      getMedia();
+    } catch (error) {
+      console.log(error.message);
+    }
   }, []);
 
   return {mediaArray};
 };
 
 const useUser = () => {
-  const getUser = async (token) => {
-    const fetchOptions = {
+  const postUser = async (inputs) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputs),
+    };
+    return await doFetch(baseUrl + 'users', options);
+  };
+
+  const getUserByToken = async (token) => {
+    const options = {
+      method: 'GET',
       headers: {
         'x-access-token': token,
       },
     };
-    return await fetchJson(baseUrl + 'users/user', fetchOptions);
+    return await doFetch(baseUrl + 'users/user', options);
   };
 
-  const getUsername = async (username) => {
-    const checkUser = await fetchJson(baseUrl + 'users/username/' + username);
-    if (checkUser.available) {
-      return true;
-    } else {
-      throw new Error('Username not available');
-    }
+  const getCheckUser = async (username) => {
+    return await doFetch(baseUrl + 'users/username/' + username);
   };
 
-  const postUser = async (inputs) => {
-    const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(inputs),
-    };
-    return await fetchJson(baseUrl + 'users', fetchOptions);
-  };
-
-  return {getUser, postUser, getUsername};
+  return {postUser, getUserByToken, getCheckUser};
 };
 
-const useLogin = () => {
+const useAuthentication = () => {
   const postLogin = async (inputs) => {
-    const fetchOptions = {
+    const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(inputs),
     };
-    return await fetchJson(baseUrl + 'login', fetchOptions);
+    return await doFetch(baseUrl + 'login', options);
   };
   return {postLogin};
 };
 
-export {useLogin, useMedia, useUser};
+export {useAuthentication, useMedia, useUser};
+

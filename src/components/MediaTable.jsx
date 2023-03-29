@@ -1,22 +1,72 @@
-// import PropTypes from 'prop-types';
-import React from 'react';
-import {useMedia} from '../hooks/ApiHooks';
-import MediaRow from './MediaRow';
+import PropTypes from 'prop-types';
+import {useUser} from '../hooks/ApiHooks';
+import useForm from '../hooks/FormHooks';
 
-const MediaTable = () => {
-  const {mediaArray} = useMedia();
-  console.log(mediaArray);
+const RegisterForm = (props) => {
+  const {postUser, getCheckUser} = useUser();
+
+  const initValues = {
+    username: '',
+    password: '',
+    email: '',
+    full_name: '',
+  };
+
+  const doRegister = async () => {
+    try {
+      const userResult = await postUser(inputs);
+      alert(userResult.message);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleUsername = async () => {
+    const {available} = await getCheckUser(inputs.username);
+    available || alert('Username not available');
+  };
+
+  const {inputs, handleSubmit, handleInputChange} = useForm(
+    doRegister,
+    initValues
+  );
+
   return (
-    <table>
-      <tbody>
-        {mediaArray.map((item, index) => {
-          return <MediaRow key={index} file={item} />;
-        })}
-      </tbody>
-    </table>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="username"
+          placeholder="Username"
+          onChange={handleInputChange}
+          value={inputs.username}
+          onBlur={handleUsername}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleInputChange}
+          value={inputs.password}
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleInputChange}
+          value={inputs.email}
+        />
+        <input
+          name="full_name"
+          placeholder="Full name"
+          onChange={handleInputChange}
+          value={inputs.full_name}
+        />
+        <button type="submit">Register</button>
+      </form>
+    </>
   );
 };
 
-MediaTable.propTypes = {};
+RegisterForm.propTypes = {};
 
-export default MediaTable;
+export default RegisterForm;

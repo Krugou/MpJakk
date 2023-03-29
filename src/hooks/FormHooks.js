@@ -8,12 +8,6 @@ const useForm = (callback, initState) => {
     }
     callback();
   };
-  /*
-  explanation:
-  event.persist() is used to remove the synthetic event from the pool and allow references to the event to be retained by user code.
-  https://reactjs.org/docs/events.html#event-pooling
-
-*/
 
   const handleInputChange = (event) => {
     event.persist();
@@ -24,11 +18,8 @@ const useForm = (callback, initState) => {
       };
     });
   };
-  return {
-    inputs,
-    handleSubmit,
-    handleInputChange,
-  };
+
+  return {inputs, handleSubmit, handleInputChange};
 };
 
 export default useForm;

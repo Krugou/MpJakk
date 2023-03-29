@@ -1,53 +1,49 @@
-// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
-import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {MediaContext} from '../contexts/MediaContext';
-import {useLogin} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
+import {useAuthentication} from '../hooks/apiHooks';
 
 const LoginForm = (props) => {
-  // eslint-disable-next-line no-unused-vars
-  const [user, setUser] = useContext(MediaContext);
-  const alkuarvot = {
+  const {postLogin} = useAuthentication();
+  const navigate = useNavigate();
+
+  const initValues = {
     username: '',
     password: '',
   };
 
-  const {postLogin} = useLogin();
-  const navigate = useNavigate();
-
   const doLogin = async () => {
-    console.log('doLogin');
     try {
-      const userData = await postLogin(inputs);
-      localStorage.setItem('token', userData.token);
-      setUser(userData.user);
+      const loginResult = await postLogin(inputs);
+      localStorage.setItem('userToken', loginResult.token);
       navigate('/home');
-    } catch (err) {
-      alert(err.message);
+    } catch (error) {
+      alert(error.message);
     }
   };
 
-  const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, alkuarvot);
-  console.log(inputs);
+  const {inputs, handleSubmit, handleInputChange} = useForm(
+    doLogin,
+    initValues
+  );
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="username"
           name="username"
+          placeholder="Username"
           onChange={handleInputChange}
           value={inputs.username}
         />
         <input
-          placeholder="password"
           name="password"
           type="password"
+          placeholder="Password"
           onChange={handleInputChange}
           value={inputs.password}
         />
-        <input className="inputbutton" type="submit" value="login" />
+        <button type="submit">Login</button>
       </form>
     </>
   );
