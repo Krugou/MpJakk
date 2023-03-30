@@ -1,10 +1,10 @@
-// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
-import React from 'react';
-import {useUser} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
+import {useUser} from '../hooks/ApiHooks';
 
 const RegisterForm = (props) => {
+  const {postUser, getCheckUser} = useUser();
+
   const initValues = {
     username: '',
     password: '',
@@ -12,22 +12,21 @@ const RegisterForm = (props) => {
     full_name: '',
   };
 
-  const {postUser, getUsername} = useUser();
-
   const doRegister = async () => {
-    console.log('doRegister');
     try {
-      const checkUser = await getUsername(inputs.username);
-      if (checkUser) {
-        const userData = await postUser(inputs);
-        console.log(userData);
-      }
-    } catch (err) {
-      alert(err.message);
+      const userResult = await postUser(inputs);
+      alert(userResult.message);
+    } catch (error) {
+      alert(error.message);
     }
   };
 
-  const {inputs, handleInputChange, handleSubmit} = useForm(
+  const handleUsername = async () => {
+    const {available} = await getCheckUser(inputs.username);
+    available || alert('Username not available');
+  };
+
+  const {inputs, handleSubmit, handleInputChange} = useForm(
     doRegister,
     initValues
   );
@@ -36,32 +35,33 @@ const RegisterForm = (props) => {
     <>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="username"
           name="username"
+          placeholder="Username"
           onChange={handleInputChange}
           value={inputs.username}
+          onBlur={handleUsername}
         />
         <input
-          placeholder="password"
           name="password"
           type="password"
+          placeholder="Password"
           onChange={handleInputChange}
           value={inputs.password}
         />
         <input
-          placeholder="email"
           name="email"
           type="email"
+          placeholder="Email"
           onChange={handleInputChange}
           value={inputs.email}
         />
         <input
-          placeholder="full name"
           name="full_name"
+          placeholder="Full name"
           onChange={handleInputChange}
           value={inputs.full_name}
         />
-        <input className="inputbutton" type="submit" value="register" />
+        <button type="submit">Register</button>
       </form>
     </>
   );
