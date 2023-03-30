@@ -1,5 +1,6 @@
+import {Button, TextField} from '@mui/material';
 import PropTypes from 'prop-types';
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
 import useForm from '../hooks/FormHooks';
@@ -34,20 +35,26 @@ const LoginForm = (props) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
+          fullWidth
+          margin="normal"
           name="username"
           placeholder="Username"
           onChange={handleInputChange}
           value={inputs.username}
         />
-        <input
+        <TextField
+          fullWidth
+          margin="normal"
           name="password"
           type="password"
           placeholder="Password"
           onChange={handleInputChange}
           value={inputs.password}
         />
-        <button type="submit">Login</button>
+        <Button fullWidth sx={{mt: 2}} type="submit">
+          Login
+        </Button>
       </form>
     </>
   );
