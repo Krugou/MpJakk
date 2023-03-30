@@ -1,3 +1,4 @@
+import React from 'react';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import './App.scss';
 import {MediaProvider} from './contexts/MediaContext';
@@ -7,7 +8,6 @@ import Login from './views/Login';
 import Logout from './views/Logout';
 import Profile from './views/Profile';
 import Single from './views/Single';
-import React from 'react';
 
 const App = () => {
   return (
