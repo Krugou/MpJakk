@@ -8,7 +8,7 @@ const registerForm = {
     'password must be at least 5 characters',
   ],
   confirm: ['this field is required', 'password must be at least 5 characters'],
-  email: [['this field is required', 'email is not valid']],
+  email: ['this field is required', 'email is not valid'],
   full_name: ['not a valid name'],
 };
 

@@ -1,13 +1,13 @@
 import {
   AppBar,
-  Container,
-  createTheme,
-  ThemeProvider,
-  Toolbar,
   Box,
   Button,
+  Container,
   CssBaseline,
+  ThemeProvider,
+  Toolbar,
   Typography,
+  createTheme,
 } from '@mui/material';
 import {useContext, useEffect} from 'react';
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
@@ -55,7 +55,7 @@ const Layout = () => {
                 letterSpacing: '.3rem',
               }}
             >
-              FIRMA
+              JakReviews
             </Typography>
             <Box sx={{mr: 2}}>
               <Button sx={{color: 'white'}} component={Link} to="/home">
