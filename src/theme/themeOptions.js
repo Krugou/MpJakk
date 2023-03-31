@@ -14,6 +14,17 @@ const themeOptions = {
   },
   typography: {
     fontFamily: ['Merriweather', 'Work sans'].join(','), // Work Sans
+    h1: {
+      fontFamily: 'Merriweather',
+      fontWeight: 700,
+      fontSize: '3rem',
+      lineHeight: 1.167,
+      letterSpacing: '-0.01562em',
+    },
+    h2: {
+      fontFamily: 'Work Sans',
+      fontWeight: 700,
+    },
   },
   overrides: {
     MuiCssBaseline: {
