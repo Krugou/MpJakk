@@ -1,9 +1,11 @@
-import {Box, Button, Grid, TextValidator} from '@mui/material';
+import {Box, Button, Grid} from '@mui/material';
 import {Container} from '@mui/system';
 import PropTypes from 'prop-types';
 import {TextValidator, ValidatorForm} from 'react-material-ui-form-validator';
 import {useUser} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
+import {registerForm} from '../utils/errorMessages';
+import {registerValidators} from '../utils/validators';
 
 const RegisterForm = (props) => {
   const {postUser, getCheckUser} = useUser();
@@ -44,6 +46,8 @@ const RegisterForm = (props) => {
           label="Username"
           onChange={handleInputChange}
           value={inputs.username}
+          validators={registerValidators.username}
+          errorMessages={registerForm.username}
         />
         <TextValidator
           fullWidth
@@ -53,6 +57,9 @@ const RegisterForm = (props) => {
           label="Password"
           onChange={handleInputChange}
           value={inputs.password}
+          validators={registerValidators.password}
+          errorMessages={registerForm.password}
+
         />
         <TextValidator
           fullWidth
@@ -62,8 +69,8 @@ const RegisterForm = (props) => {
           label="Email"
           onChange={handleInputChange}
           value={inputs.email}
-          validators={['required','isEmail']}
-          errorMessages={['this field is required', 'email is not valid']}
+          validators={registerValidators.email}
+          errorMessages={registerForm.email}
         />
         <TextValidator
           fullWidth
@@ -72,6 +79,8 @@ const RegisterForm = (props) => {
           label="Full name"
           onChange={handleInputChange}
           value={inputs.full_name}
+          validators={registerValidators.full_name}
+          errorMessages={registerForm.full_name}
         />
         <Button fullWidth sx={{mt: 1}} variant="contained" type="submit">
           Register
