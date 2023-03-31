@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week3-material-ui
+## branchName: week3-validation-vite
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui](https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite](https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week3-material-ui
+BuildDirName: mpjakkpages/week3-validation-vite
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui](https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite](https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite)
