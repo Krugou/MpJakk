@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import useForm from '../hooks/FormHooks';
-import {useUser} from '../hooks/ApiHooks';
 import {Box, Button, Grid, TextField} from '@mui/material';
 import {Container} from '@mui/system';
+import PropTypes from 'prop-types';
+import {useUser} from '../hooks/ApiHooks';
+import useForm from '../hooks/FormHooks';
 
 const RegisterForm = (props) => {
   const {postUser, getCheckUser} = useUser();
