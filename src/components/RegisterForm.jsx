@@ -38,7 +38,7 @@ const RegisterForm = (props) => {
 
   return (
     <Container maxWidth="xs">
-      <ValidatorForm  onSubmit={handleSubmit} noValidate>
+      <ValidatorForm onSubmit={handleSubmit} noValidate>
         <TextValidator
           fullWidth
           margin="dense"
@@ -59,7 +59,6 @@ const RegisterForm = (props) => {
           value={inputs.password}
           validators={registerValidators.password}
           errorMessages={registerForm.password}
-
         />
         <TextValidator
           fullWidth
@@ -89,7 +88,6 @@ const RegisterForm = (props) => {
     </Container>
   );
 };
-
 
 RegisterForm.propTypes = {};
 
