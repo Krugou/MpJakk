@@ -7,8 +7,8 @@ const registerValidators = {
 };
 
 const loginValidators = {
-  username: [],
-  password: [],
+  username: ['required'],
+  password: ['required'],
 };
 
 export {loginValidators, registerValidators};
