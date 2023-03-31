@@ -1,21 +1,21 @@
 import {Card, CardMedia, Typography} from '@mui/material';
-import React from 'react';
 import {useLocation} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
+
 const Single = () => {
   const {state} = useLocation();
   const file = state.file;
 
   return (
     <>
-      <Typography component="h1" variant="h2">
+      <Typography component="h1" variant="h3">
         {file.title}
       </Typography>
       <Card>
         <CardMedia
           component={'img'}
           src={mediaUrl + file.filename}
-          alt={file.title}
+          title={file.title}
         />
       </Card>
     </>

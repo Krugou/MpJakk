@@ -36,4 +36,4 @@ const themeOptions = {
     },
   },
 };
-export default {themeOptions};
+export {themeOptions};

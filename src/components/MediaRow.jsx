@@ -1,8 +1,8 @@
 import {Button, ImageListItem, ImageListItemBar} from '@mui/material';
 import PropTypes from 'prop-types';
-import React from 'react';
 import {Link} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
+
 const MediaRow = ({file}) => {
   return (
     <ImageListItem>
