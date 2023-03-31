@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week2-login-vite
+## branchName: week3-material-ui
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui](https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week2-login-vite
+BuildDirName: mpjakkpages/week3-material-ui
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite](https://users.metropolia.fi/~aleksino/mpjakk/week2-login-vite)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui](https://users.metropolia.fi/~aleksino/mpjakk/week3-material-ui)
