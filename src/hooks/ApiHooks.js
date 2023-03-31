@@ -63,7 +63,8 @@ const useUser = () => {
   };
 
   const getCheckUser = async (username) => {
-    return await doFetch(baseUrl + 'users/username/' + username);
+    const {available} = await doFetch(baseUrl + 'users/username/' + username);
+    return available;
   };
 
   return {postUser, getUserByToken, getCheckUser};
@@ -109,4 +110,3 @@ const useTag = () => {
 };
 
 export {useAuthentication, useMedia, useTag, useUser};
-

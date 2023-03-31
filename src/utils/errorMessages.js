@@ -2,6 +2,7 @@ const registerForm = {
   username: [
     'this field is required',
     'username must be at least 3 characters',
+    'username is already taken',
   ],
   password: [
     'this field is required',
