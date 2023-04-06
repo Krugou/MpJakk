@@ -17,7 +17,7 @@ const useMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);
   const getMedia = async () => {
     try {
-      const files = await doFetch(baseUrl + 'media');
+      const files = await useTag().getTag(appID);
       const filesWithThumbnail = await Promise.all(
         files.map(async (file) => {
           return await doFetch(baseUrl + 'media/' + file.file_id);
@@ -37,7 +37,18 @@ const useMedia = () => {
     }
   }, []);
 
-  return {mediaArray};
+  const postMedia = async (data, token) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'x-access-token': token,
+      },
+      body: data,
+    };
+    return await doFetch(baseUrl + 'media', options);
+  };
+
+  return {mediaArray, postMedia};
 };
 
 const useUser = () => {
