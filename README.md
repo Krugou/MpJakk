@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week3-validation-vite
+## branchName: week4-upload-vite
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite](https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite](https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week3-validation-vite
+BuildDirName: mpjakkpages/week4-upload-vite
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite](https://users.metropolia.fi/~aleksino/mpjakk/week3-validation-vite)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite](https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite)
