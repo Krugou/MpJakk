@@ -1,5 +1,6 @@
-import {useEffect, useState} from 'react';
-import {appID, baseUrl} from '../utils/variables';
+import {useContext, useEffect, useState} from 'react';
+import {MediaContext} from '../contexts/MediaContext';
+import {appId, baseUrl} from '../utils/variables';
 
 const doFetch = async (url, options) => {
   const response = await fetch(url, options);
@@ -13,11 +14,17 @@ const doFetch = async (url, options) => {
   return json;
 };
 
-const useMedia = () => {
+const useMedia = (myFilesOnly = false) => {
   const [mediaArray, setMediaArray] = useState([]);
+  const {user} = useContext(MediaContext);
   const getMedia = async () => {
     try {
-      const files = await useTag().getTag(appID);
+      let files = await useTag().getTag(appId);
+
+      if (myFilesOnly) {
+        files = files.filter((file) => file.user_id === user.user_id);
+      }
+
       const filesWithThumbnail = await Promise.all(
         files.map(async (file) => {
           return await doFetch(baseUrl + 'media/' + file.file_id);
@@ -48,7 +55,29 @@ const useMedia = () => {
     return await doFetch(baseUrl + 'media', options);
   };
 
-  return {mediaArray, postMedia};
+  const deleteMedia = async (id, token) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token,
+      },
+    };
+    return await doFetch(baseUrl + 'media/' + id, options);
+  };
+
+  const putMedia = async (id, data, token) => {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'x-access-token': token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    return await doFetch(baseUrl + 'media/' + id, options);
+  };
+
+  return {mediaArray, postMedia, deleteMedia, putMedia};
 };
 
 const useUser = () => {
@@ -78,7 +107,17 @@ const useUser = () => {
     return available;
   };
 
-  return {postUser, getUserByToken, getCheckUser};
+  const getUser = async (id, token) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-access-token': token,
+      },
+    };
+    return await doFetch(baseUrl + 'users/' + id, options);
+  };
+
+  return {postUser, getUserByToken, getCheckUser, getUser};
 };
 
 const useAuthentication = () => {

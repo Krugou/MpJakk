@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import {useContext, useEffect, useState} from 'react';
 import {MediaContext} from '../contexts/MediaContext';
-import {useTag} from '../hooks/apiHooks';
+import {useTag} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
 
 const Profile = () => {
@@ -72,6 +72,12 @@ const Profile = () => {
                 <Badge />
               </ListItemIcon>
               <ListItemText primary={user.full_name} />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <Badge />
+              </ListItemIcon>
+              <ListItemText primary={user.user_id} />
             </ListItem>
           </List>
         </CardContent>

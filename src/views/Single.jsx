@@ -1,12 +1,30 @@
 import {Card, CardContent, CardMedia, Typography} from '@mui/material';
+import {useEffect, useState} from 'react';
 import {useLocation} from 'react-router-dom';
+import {useUser} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
 
 const Single = () => {
+  const [owner, setOwner] = useState({username: ''});
+
+  const {getUser} = useUser();
+
+  const fetchUser = async () => {
+    try {
+      const token = localStorage.getItem('userToken');
+      const onwerInfo = await getUser(file.user_id, token);
+      setOwner(onwerInfo);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const {state} = useLocation();
   const file = state.file;
-  let filters = '';
-  let desc = '';
   let allData = {
     desc: file.description,
     filters: {
@@ -18,9 +36,19 @@ const Single = () => {
   };
   try {
     allData = JSON.parse(file.description);
-    filters = allData.filters;
-    desc = allData.desc;
-  } catch (error) {}
+  } catch (error) {
+    /* empty */
+  }
+  let componentType = 'img';
+  switch (file.media_type) {
+    case 'video':
+      componentType = 'video';
+      break;
+    case 'audio':
+      componentType = 'audio';
+      break;
+  }
+
   return (
     <>
       <Typography component="h1" variant="h3">
@@ -28,19 +56,26 @@ const Single = () => {
       </Typography>
       <Card>
         <CardMedia
-          component={'img'}
+          controls={true}
+          poster={mediaUrl + file.screenshot}
+          component={componentType}
           src={mediaUrl + file.filename}
           title={file.title}
           style={{
-            objectFit: 'cover',
-            filter: `brightness(${filters.brightness}%)
-          contrast(${filters.contrast}%)
-          saturate(${filters.saturation}%)
-          sepia(${filters.sepia}%)`,
+            width: '100%',
+            height: 400,
+            filter: `
+            brightness(${allData.filters.brightness}%)
+            contrast(${allData.filters.contrast}%)
+            saturate(${allData.filters.saturation}%)
+            sepia(${allData.filters.sepia}%)
+            `,
+            backgroundImage: file.media_type === 'audio' && `url(./vite.svg)`,
           }}
         />
         <CardContent>
-          <Typography variant="body1">{desc}</Typography>
+          <Typography variant="body1">{allData.desc}</Typography>
+          <Typography variant="body2">By: {owner.username}</Typography>
         </CardContent>
       </Card>
     </>

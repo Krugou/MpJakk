@@ -1,40 +1,68 @@
-import {Button, ImageListItem, ImageListItemBar} from '@mui/material';
+import {
+  Button,
+  ButtonGroup,
+  ImageListItem,
+  ImageListItemBar,
+} from '@mui/material';
 import PropTypes from 'prop-types';
+import {useContext} from 'react';
 import {Link} from 'react-router-dom';
+import {MediaContext} from '../contexts/MediaContext';
+import {useMedia} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
 
 const MediaRow = ({file}) => {
-  let filters = '';
-  let desc = '';
-  let allData = {
-    desc: file.description,
-    filters: {
-      brightness: 100,
-      contrast: 100,
-      saturation: 100,
-      sepia: 0,
-    },
+  const {deleteMedia} = useMedia();
+  const {user} = useContext(MediaContext);
+
+  const doDelete = async () => {
+    const sure = confirm('Are you sure?');
+    if (sure) {
+      const token = localStorage.getItem('userToken');
+      const deleteResult = await deleteMedia(file.file_id, token);
+      console.log(deleteResult);
+    }
   };
-  try {
-    allData = JSON.parse(file.description);
-    filters = allData.filters;
-  } catch (error) {}
-  desc = allData.desc;
+
   return (
     <ImageListItem>
-      <img src={mediaUrl + file.thumbnails.w640} alt={file.title} />
+      <img
+        src={
+          file.media_type !== 'audio'
+            ? mediaUrl + file.thumbnails.w640
+            : './vite.svg'
+        }
+        alt={file.title}
+      />
       <ImageListItemBar
         title={file.title}
-        subtitle={desc}
+        subtitle={file.description}
         actionIcon={
-          <Button
-            component={Link}
-            variant="contained"
-            to="/single"
-            state={{file}}
-          >
-            View
-          </Button>
+          <ButtonGroup>
+            <Button
+              component={Link}
+              variant="contained"
+              to="/single"
+              state={{file}}
+            >
+              View
+            </Button>
+            {file.user_id === user.user_id && (
+              <>
+                <Button
+                  component={Link}
+                  variant="contained"
+                  to="/update"
+                  state={{file}}
+                >
+                  Update
+                </Button>
+                <Button component={Link} variant="contained" onClick={doDelete}>
+                  Delete
+                </Button>
+              </>
+            )}
+          </ButtonGroup>
         }
       />
     </ImageListItem>

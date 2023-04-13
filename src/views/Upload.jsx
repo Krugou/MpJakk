@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useMedia, useTag} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
-import {appID} from '../utils/variables';
+import {appId} from '../utils/variables';
 
 const Upload = (props) => {
   const [file, setFile] = useState(null);
@@ -42,7 +42,7 @@ const Upload = (props) => {
       const tagResult = await postTag(
         {
           file_id: uploadResult.file_id,
-          tag: appID,
+          tag: appId,
         },
         userToken
       );

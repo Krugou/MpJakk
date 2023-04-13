@@ -12,7 +12,7 @@ import {
 import {useContext, useEffect} from 'react';
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
-import {useUser} from '../hooks/apiHooks';
+import {useUser} from '../hooks/ApiHooks';
 import {themeOptions} from '../theme/themeOptions';
 
 const Layout = () => {
@@ -55,7 +55,7 @@ const Layout = () => {
                 letterSpacing: '.3rem',
               }}
             >
-              JakReviews
+              FIRMA
             </Typography>
             <Box sx={{mr: 2}}>
               <Button sx={{color: 'white'}} component={Link} to="/home">
@@ -66,11 +66,14 @@ const Layout = () => {
                   <Button sx={{color: 'white'}} component={Link} to="/profile">
                     Profile
                   </Button>
-                  <Button sx={{color: 'white'}} component={Link} to="/logout">
-                    Logout
-                  </Button>
                   <Button sx={{color: 'white'}} component={Link} to="/upload">
                     Upload
+                  </Button>
+                  <Button sx={{color: 'white'}} component={Link} to="/myfiles">
+                    My Files
+                  </Button>
+                  <Button sx={{color: 'white'}} component={Link} to="/logout">
+                    Logout
                   </Button>
                 </>
               ) : (
