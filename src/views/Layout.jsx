@@ -55,7 +55,7 @@ const Layout = () => {
                 letterSpacing: '.3rem',
               }}
             >
-              FIRMA
+              Jakreviews
             </Typography>
             <Box sx={{mr: 2}}>
               <Button sx={{color: 'white'}} component={Link} to="/home">
