@@ -16,7 +16,7 @@ const doFetch = async (url, options) => {
 
 const useMedia = (myFilesOnly = false) => {
   const [mediaArray, setMediaArray] = useState([]);
-  const {user} = useContext(MediaContext);
+  const {user,update} = useContext(MediaContext);
   const getMedia = async () => {
     try {
       let files = await useTag().getTag(appId);
@@ -42,7 +42,7 @@ const useMedia = (myFilesOnly = false) => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [update]);
 
   const postMedia = async (data, token) => {
     const options = {

@@ -2,18 +2,18 @@ import {
   Button,
   ButtonGroup,
   ImageListItem,
-  ImageListItemBar,
+  ImageListItemBar
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import {useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
 import {useMedia} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
 
-const MediaRow = ({file}) => {
-  const {deleteMedia} = useMedia();
-  const {user} = useContext(MediaContext);
+const MediaRow = ({file, deleteMedia}) => {
+  const {user, setUpdate} = useContext(MediaContext);
+  const navigate = useNavigate();
 
   const doDelete = async () => {
     const sure = confirm('Are you sure?');
@@ -21,6 +21,7 @@ const MediaRow = ({file}) => {
       const token = localStorage.getItem('userToken');
       const deleteResult = await deleteMedia(file.file_id, token);
       console.log(deleteResult);
+      setUpdate(!update);
     }
   };
 
@@ -71,6 +72,7 @@ const MediaRow = ({file}) => {
 
 MediaRow.propTypes = {
   file: PropTypes.object.isRequired,
+  deleteMedia: PropTypes.func.isRequired,
 };
 
 export default MediaRow;

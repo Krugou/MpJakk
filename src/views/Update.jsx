@@ -42,7 +42,7 @@ const Update = (props) => {
       };
       const data = {
         title: inputs.title,
-        description: allData,
+        description: JSON.stringify(allData),
       };
       const userToken = localStorage.getItem('userToken');
       const updateResult = await putMedia(file.file_id, data, userToken);
