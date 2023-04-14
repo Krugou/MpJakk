@@ -1,16 +1,16 @@
 import {Box, Button, Slider} from '@mui/material';
-import PropTypes from 'prop-types';
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useMedia, useTag} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
 import {appId} from '../utils/variables';
 
-const Upload = (props) => {
+const Upload = () => {
   const [file, setFile] = useState(null);
   const [selectedImage, setSelectedImage] = useState(
-    'https://placehold.co/600x400?text=Choose-media'
+    'https://placekitten.com/600/400'
   );
+  // 'https://placehold.co/600x400?text=Choose-media'
   const {postMedia} = useMedia();
   const {postTag} = useTag();
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Upload = (props) => {
     title: '',
     description: '',
   };
+
   const filterInitValues = {
     brightness: 100,
     contrast: 100,
@@ -34,7 +35,6 @@ const Upload = (props) => {
         desc: inputs.description,
         filters: filterInputs,
       };
-
       data.append('description', JSON.stringify(allData));
       data.append('file', file);
       const userToken = localStorage.getItem('userToken');
@@ -60,7 +60,7 @@ const Upload = (props) => {
     reader.addEventListener('load', () => {
       setSelectedImage(reader.result);
     });
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(event.target.files[0]);
   };
 
   const {inputs, handleSubmit, handleInputChange} = useForm(
@@ -73,7 +73,7 @@ const Upload = (props) => {
     filterInitValues
   );
 
-  // console.log('Upload', inputs, file);
+  console.log('Upload', file);
 
   return (
     <Box>
@@ -81,13 +81,15 @@ const Upload = (props) => {
         src={selectedImage}
         alt="preview"
         style={{
-          width: 300,
-          height: 200,
-          objectFit: 'cover',
-          filter: `brightness(${filterInputs.brightness}%)
+          width: '100%',
+          height: 400,
+          objectFit: 'contain',
+          filter: `
+          brightness(${filterInputs.brightness}%)
           contrast(${filterInputs.contrast}%)
           saturate(${filterInputs.saturation}%)
-          sepia(${filterInputs.sepia}%)`,
+          sepia(${filterInputs.sepia}%)
+          `,
         }}
       />
       <form onSubmit={handleSubmit}>
@@ -114,46 +116,40 @@ const Upload = (props) => {
         name="brightness"
         min={0}
         max={200}
-        step={5}
-        marks
+        step={1}
         valueLabelDisplay="auto"
-        value={filterInputs.brightness}
         onChange={handleFilterChange}
+        value={filterInputs.brightness}
       />
       <Slider
         name="contrast"
         min={0}
         max={200}
-        step={5}
-        marks
+        step={1}
         valueLabelDisplay="auto"
-        value={filterInputs.contrast}
         onChange={handleFilterChange}
+        value={filterInputs.contrast}
       />
       <Slider
         name="saturation"
         min={0}
         max={200}
-        step={5}
-        marks
+        step={1}
         valueLabelDisplay="auto"
-        value={filterInputs.saturation}
         onChange={handleFilterChange}
+        value={filterInputs.saturation}
       />
       <Slider
         name="sepia"
         min={0}
         max={100}
-        step={5}
-        marks
+        step={1}
         valueLabelDisplay="auto"
-        value={filterInputs.sepia}
         onChange={handleFilterChange}
+        value={filterInputs.sepia}
       />
     </Box>
   );
 };
-
-Upload.propTypes = {};
 
 export default Upload;
