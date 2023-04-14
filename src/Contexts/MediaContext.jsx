@@ -7,7 +7,7 @@ const MediaProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [update, setUpdate] = useState(true);
   return (
-    <MediaContext.Provider value={{user, setUser, update , setUpdate}}>
+    <MediaContext.Provider value={{user, setUser, update, setUpdate}}>
       {children}
     </MediaContext.Provider>
   );

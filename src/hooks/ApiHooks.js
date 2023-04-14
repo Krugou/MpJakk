@@ -158,6 +158,7 @@ const useTag = () => {
 
   return {getTag, postTag};
 };
+
 const useFavourite = () => {
   const postFavourite = async (data, token) => {
     const fetchOptions = {
@@ -166,13 +167,15 @@ const useFavourite = () => {
         'x-access-token': token,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({data}),
+      body: JSON.stringify(data),
     };
     return await doFetch(baseUrl + 'favourites', fetchOptions);
   };
-  const getFavourite = async (id) => {
-    return await doFetch(baseUrl + 'favourites/file' + id);
+
+  const getFavourites = async (id) => {
+    return await doFetch(baseUrl + 'favourites/file/' + id);
   };
+
   const deleteFavourite = async (id, token) => {
     const options = {
       method: 'DELETE',
@@ -180,9 +183,10 @@ const useFavourite = () => {
         'x-access-token': token,
       },
     };
-    return await doFetch(baseUrl + 'favourites/file', options);
+    return await doFetch(baseUrl + 'favourites/file/' + id, options);
   };
-  return {postFavourite, getFavourite, deleteFavourite};
+
+  return {postFavourite, getFavourites, deleteFavourite};
 };
 
-export {useAuthentication, useMedia, useTag, useUser, useFavourite};
+export {useMedia, useUser, useAuthentication, useTag, useFavourite};
