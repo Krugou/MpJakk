@@ -1,8 +1,8 @@
 # MpJakk
 
-## branchName: week4-upload-vite
+## branchName: week5-player-vite
 
-Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite](https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite)
+Open link in browser [https://users.metropolia.fi/~aleksino/mpjakk/week5-player-vite](https://users.metropolia.fi/~aleksino/mpjakk/week5-player-vite)
 
 ## Custom path for this branch 
 
@@ -16,6 +16,6 @@ BuildFolder: mpjakkpages
 
 DeploymentUrl: ~aleksino/mpjakk
 
-BuildDirName: mpjakkpages/week4-upload-vite
+BuildDirName: mpjakkpages/week5-player-vite
 
-Link: [https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite](https://users.metropolia.fi/~aleksino/mpjakk/week4-upload-vite)
+Link: [https://users.metropolia.fi/~aleksino/mpjakk/week5-player-vite](https://users.metropolia.fi/~aleksino/mpjakk/week5-player-vite)
